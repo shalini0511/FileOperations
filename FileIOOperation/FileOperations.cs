@@ -130,5 +130,57 @@ namespace FileIOOperation
                 Console.WriteLine(ex.Message);
             }
         }
+        public static void ReadFromStreamReader()
+        {
+            string streamReadPath = @"C:\Users\Radhika\source\repos\FileIOOperations\FileIOOperations\FileText.txt";
+            try
+            {
+                using (StreamReader reader = new StreamReader(streamReadPath))
+                {
+                    string line;
+                    Console.WriteLine("\n------------Read the file from stream reader class------\n");
+                    while ((line = reader.ReadLine()) != null)
+                    {
+
+                        Console.WriteLine(line);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// StreamWriter- To write in a file
+        /// </summary>
+        public static void WriteUsingStreamWriter()
+        {
+            string streamWritePath = @"C:\Users\Radhika\source\repos\FileIOOperations\FileIOOperations\FileText.txt";
+            FileStream stream = null;
+            try
+            {
+                stream = new FileStream(streamWritePath, FileMode.OpenOrCreate);
+                using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8))
+                {
+                    writer.WriteLine("Hello..");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Dispose();
+                }
+            }
+            string readText = File.ReadAllText(streamWritePath);
+            Console.WriteLine(readText);
+
+        }
     }
 }
