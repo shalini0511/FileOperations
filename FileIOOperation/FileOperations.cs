@@ -34,6 +34,12 @@ namespace FileIOOperation
                 return false;
             }
         }
+
+        internal static void FileExists(string path)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Read all lines in a file - ReadAllLines returns an array of string 
         /// </summary>
@@ -102,6 +108,26 @@ namespace FileIOOperation
             catch (IOException iox)
             {
                 Console.WriteLine(iox.Message);
+            }
+        }
+        public static void DeleteFile()
+        {
+            try
+            {
+                string delFile = @"C:\Users\HP\source\repos\FileIOOperation\FileText1.txt";
+                if (FileExists)
+                {
+                    File.Delete(delFile);
+                    Console.WriteLine("File deleted");
+                }
+                else
+                {
+                    Console.WriteLine("File not found!!!");
+                }
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
